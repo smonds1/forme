@@ -389,6 +389,7 @@ hr.rule{border:none;border-top:.5px solid var(--rule);margin:8px 0}
     <div class="header-top">
       <div class="header-date" id="hdrDate">Thursday</div>
       <div class="header-meta" id="hdrMeta"></div>
+<button onclick="doLogout()" style="font-family:var(--font-mono);font-size:.58rem;padding:4px 10px;border-radius:5px;border:.5px solid #D6D2C8;background:#EDE9E1;color:#9B9688;cursor:pointer;flex-shrink:0" onmouseover="this.style.color='#B83232';this.style.borderColor='#B83232'" onmouseout="this.style.color='#9B9688';this.style.borderColor='#D6D2C8'">logout</button>
     </div>
     <div class="mode-bar">
       <button class="mode-btn active" id="modeWork" onclick="setMode('work')">Work</button>
@@ -1754,7 +1755,12 @@ function delSub(key, id){
 // ═══════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════
-async function doLogin(){
+async function doLogout(){
+  if(window._fbLogout) await window._fbLogout();
+  window._uid = null;
+  location.reload();
+}
+  async function doLogin(){
   const email = document.getElementById('loginEmail').value.trim();
   const pass  = document.getElementById('loginPass').value;
   const err   = document.getElementById('loginErr');
