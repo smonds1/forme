@@ -1795,7 +1795,7 @@ function _doInit(){
 function _maybeInit(){
   if(_initDone) return; _initDone=true; _doInit();
 }
-document.addEventListener('fbready', _maybeInit);
+document.addEventListener('fbready', ()=>{ _maybeInit(); renderNotepad(); });
 // No fallback timeout — app only initializes after confirmed Firebase login
 </script>
 </body>
